@@ -1,11 +1,12 @@
 import React, { useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
+import { Briefcase, Building2, Wrench, Rocket, CheckCircle2, ArrowRight } from 'lucide-react'
 
 const industries = [
   {
     title: 'SaaS Companies',
     description: 'Move faster on product features without bloating your engineering headcount.',
-    icon: '💼',
+    Icon: Briefcase,
     gradient: 'from-[#6B7EF2] to-[#5563e5]',
     glowColor: 'rgba(107, 126, 242, 0.3)',
     features: ['Rapid Development', 'Scalable Solutions', 'Cost Efficient'],
@@ -13,7 +14,7 @@ const industries = [
   {
     title: 'Fintech & Enterprise',
     description: 'Automate compliance scaffolding, test coverage, and audit trails with precision.',
-    icon: '🏦',
+    Icon: Building2,
     gradient: 'from-[#8B5CF6] to-[#7C3AED]',
     glowColor: 'rgba(139, 92, 246, 0.3)',
     features: ['Compliance Ready', 'Audit Trails', 'Security First'],
@@ -21,7 +22,7 @@ const industries = [
   {
     title: 'Dev Tools & Platforms',
     description: 'Embed our framework as a layer inside your own toolchain or IDE integrations.',
-    icon: '🛠️',
+    Icon: Wrench,
     gradient: 'from-[#EC4899] to-[#DB2777]',
     glowColor: 'rgba(236, 72, 153, 0.3)',
     features: ['API Integration', 'Plugin Support', 'White Label'],
@@ -29,7 +30,7 @@ const industries = [
   {
     title: 'Startups at Scale',
     description: 'Punch above your weight. Let the agent handle the execution so your team handles the vision.',
-    icon: '🚀',
+    Icon: Rocket,
     gradient: 'from-[#6B7EF2] via-[#8B5CF6] to-[#EC4899]',
     glowColor: 'rgba(107, 126, 242, 0.3)',
     features: ['Fast Iteration', 'Team Efficiency', 'Growth Ready'],
@@ -158,8 +159,8 @@ const Industries = () => {
                           animate={{ scale: hoveredIndex === index ? [1, 1.2, 1] : 1 }}
                           transition={{ duration: 2, repeat: hoveredIndex === index ? Infinity : 0 }}
                         />
-                        <div className={`relative text-5xl bg-gradient-to-br ${industry.gradient} bg-clip-text text-transparent p-3 rounded-xl`}>
-                          {industry.icon}
+                        <div className={`relative bg-gradient-to-br ${industry.gradient} bg-clip-text text-transparent p-3 rounded-xl`}>
+                          <industry.Icon className="w-8 h-8 text-white" strokeWidth={1.5} />
                         </div>
                       </motion.div>
 
@@ -192,19 +193,13 @@ const Industries = () => {
                         ))}
                       </div>
 
-                      {/* Learn More Link */}
                       <motion.div
                         className="pt-3 border-t border-gray-200 group-hover:border-transparent transition-colors"
                         whileHover={{ x: 3 }}
                       >
                         <span className={`inline-flex items-center gap-1 text-xs font-semibold bg-gradient-to-r ${industry.gradient} bg-clip-text text-transparent cursor-pointer`}>
                           Learn more
-                          <motion.span
-                            animate={{ x: hoveredIndex === index ? [0, 3, 0] : 0 }}
-                            transition={{ duration: 1, repeat: hoveredIndex === index ? Infinity : 0 }}
-                          >
-                            →
-                          </motion.span>
+                          <ArrowRight className="w-3 h-3" />
                         </span>
                       </motion.div>
                     </div>

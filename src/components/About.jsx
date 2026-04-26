@@ -1,31 +1,32 @@
 import React, { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
+import { Building2, Users, MapPin, Zap, Target, Lock } from 'lucide-react'
 
 const About = () => {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
 
   const stats = [
-    { label: 'Years at Google', value: '5+', icon: '🏢', color: 'from-blue-500 to-cyan-500' },
-    { label: 'Engineering Teams', value: '100+', icon: '👥', color: 'from-purple-500 to-pink-500' },
-    { label: 'Based in', value: 'Switzerland', icon: '🇨🇭', color: 'from-green-500 to-emerald-500' },
+    { label: 'Years at Google', value: '5+', Icon: Building2, color: 'from-blue-500 to-cyan-500' },
+    { label: 'Engineering Teams', value: '100+', Icon: Users, color: 'from-purple-500 to-pink-500' },
+    { label: 'Based in', value: 'Switzerland', Icon: MapPin, color: 'from-green-500 to-emerald-500' },
   ]
 
   const highlights = [
     {
-      icon: '⚡',
+      Icon: Zap,
       title: 'Google-Scale Expertise',
       description: 'Built systems serving billions of users',
       gradient: 'from-yellow-400 to-orange-500'
     },
     {
-      icon: '🎯',
+      Icon: Target,
       title: 'Problem-First Approach',
       description: 'Solutions born from real engineering pain points',
       gradient: 'from-blue-400 to-indigo-500'
     },
     {
-      icon: '🔒',
+      Icon: Lock,
       title: 'Privacy-Conscious',
       description: 'Swiss infrastructure, GDPR-aligned by design',
       gradient: 'from-green-400 to-teal-500'
@@ -154,11 +155,13 @@ const About = () => {
                   
                   <div className="relative z-10 flex items-start gap-4">
                     <motion.div
-                      className="text-4xl"
+                      className="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br"
                       whileHover={{ rotate: 360, scale: 1.2 }}
                       transition={{ duration: 0.5 }}
                     >
-                      {highlight.icon}
+                      <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${highlight.gradient} flex items-center justify-center shadow-md`}>
+                        <highlight.Icon className="w-6 h-6 text-white" strokeWidth={1.5} />
+                      </div>
                     </motion.div>
                     <div className="flex-1">
                       <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-gradient transition-all">
@@ -216,19 +219,15 @@ const About = () => {
                   }}
                 />
 
-                {/* Icon with animation */}
+                {/* Icon */}
                 <motion.div
-                  className="text-5xl mb-4"
-                  animate={{
-                    y: [0, -10, 0],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    delay: index * 0.2,
-                  }}
+                  className="mb-4 flex justify-center"
+                  animate={{ y: [0, -10, 0] }}
+                  transition={{ duration: 2, repeat: Infinity, delay: index * 0.2 }}
                 >
-                  {stat.icon}
+                  <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${stat.color} flex items-center justify-center shadow-lg`}>
+                    <stat.Icon className="w-7 h-7 text-white" strokeWidth={1.5} />
+                  </div>
                 </motion.div>
 
                 {/* Value with counter animation */}

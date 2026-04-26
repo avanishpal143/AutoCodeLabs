@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react'
 import { motion, useInView, AnimatePresence } from 'framer-motion'
+import { MessageSquare, Rocket, Target, Star, Brain, ChevronLeft, ChevronRight } from 'lucide-react'
 
 const testimonials = [
   {
@@ -7,35 +8,35 @@ const testimonials = [
     name: 'Marcus T.',
     role: 'Engineering Lead, B2B SaaS company, Berlin',
     gradient: 'from-[#6B7EF2] to-[#5563e5]',
-    icon: '💬',
+    Icon: MessageSquare,
   },
   {
     text: 'We shaved a full sprint worth of setup work from our last feature launch. The agent handled the scaffolding, test structure, and even a first-pass PR description. That alone was worth it.',
     name: 'Priya S.',
     role: 'CTO, Early-stage fintech, London',
     gradient: 'from-[#8B5CF6] to-[#7C3AED]',
-    icon: '🚀',
+    Icon: Rocket,
   },
   {
     text: "The orchestration layer is what sets this apart. Having specialized agents coordinate across the stack without breaking each other's work — that's a hard problem they've solved really well.",
     name: 'João R.',
     role: 'Principal Engineer, Platform team, Lisbon',
     gradient: 'from-[#EC4899] to-[#DB2777]',
-    icon: '🎯',
+    Icon: Target,
   },
   {
     text: "I was skeptical at first — I've been burned by overhyped AI tools before. But knowing the founder's background, I gave it a proper trial. It earned its place in our workflow within the first week.",
     name: 'Annika B.',
     role: 'VP Engineering, Swiss logistics scale-up',
     gradient: 'from-[#6B7EF2] via-[#8B5CF6] to-[#EC4899]',
-    icon: '⭐',
+    Icon: Star,
   },
   {
     text: "What I appreciate most is what it doesn't do — it doesn't guess blindly or hallucinate architecture decisions. It asks smart clarifying questions and then executes with discipline.",
     name: 'Daniel K.',
     role: 'Solo founder & developer, Amsterdam',
     gradient: 'from-[#8B5CF6] to-[#EC4899]',
-    icon: '🧠',
+    Icon: Brain,
   },
 ]
 
@@ -153,8 +154,8 @@ const Testimonials = () => {
 
                       <div className="relative z-10">
                         {/* Icon */}
-                        <div className={`inline-flex items-center justify-center w-9 h-9 rounded-xl bg-gradient-to-br ${t.gradient} text-white text-base mb-4 shadow-md`}>
-                          {t.icon}
+                        <div className={`inline-flex items-center justify-center w-9 h-9 rounded-xl bg-gradient-to-br ${t.gradient} mb-4 shadow-md`}>
+                          <t.Icon className="w-4 h-4 text-white" strokeWidth={1.5} />
                         </div>
 
                         {/* Quote */}
@@ -187,7 +188,7 @@ const Testimonials = () => {
                 onClick={() => goTo(current - 1)}
                 className="w-10 h-10 rounded-full border-2 border-gray-200 flex items-center justify-center text-gray-500 hover:border-[#6B7EF2] hover:text-[#6B7EF2] transition-all duration-300 bg-white shadow-sm"
               >
-                ←
+                <ChevronLeft className="w-4 h-4" />
               </motion.button>
 
               {/* Dots */}
@@ -213,7 +214,7 @@ const Testimonials = () => {
                 onClick={() => goTo(current + 1)}
                 className="w-10 h-10 rounded-full border-2 border-gray-200 flex items-center justify-center text-gray-500 hover:border-[#EC4899] hover:text-[#EC4899] transition-all duration-300 bg-white shadow-sm"
               >
-                →
+                <ChevronRight className="w-4 h-4" />
               </motion.button>
             </div>
           </div>

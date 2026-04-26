@@ -1,5 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import { CheckCircle2, ArrowRight } from 'lucide-react'
 
 const Hero = () => {
   const scrollToContact = () => {
@@ -136,15 +137,15 @@ const Hero = () => {
             className="mt-12 flex items-center justify-center gap-8 text-blue-200/60 text-sm"
           >
             <div className="flex items-center gap-2">
-              <span className="text-green-400">✓</span>
+              <CheckCircle2 className="w-4 h-4 text-green-400" />
               <span>Former Google Staff SWE</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-green-400">✓</span>
+              <CheckCircle2 className="w-4 h-4 text-green-400" />
               <span>Switzerland-Based</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-green-400">✓</span>
+              <CheckCircle2 className="w-4 h-4 text-green-400" />
               <span>GDPR Compliant</span>
             </div>
           </motion.div>

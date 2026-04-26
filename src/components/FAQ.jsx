@@ -1,44 +1,40 @@
 import React, { useState, useRef } from 'react'
 import { motion, useInView, AnimatePresence } from 'framer-motion'
+import { Bot, Lock, GitCompare, Code2, Rocket } from 'lucide-react'
 
 const faqs = [
   {
     question: 'Is this just a wrapper around GPT or another LLM?',
-    answer:
-      "No. While large language models are part of the engine, the framework is a purpose-built orchestration layer with its own planning, memory, and execution architecture. The intelligence isn't in the model — it's in the system around it.",
-    icon: '🤖',
+    answer: "No. While large language models are part of the engine, the framework is a purpose-built orchestration layer with its own planning, memory, and execution architecture. The intelligence isn't in the model — it's in the system around it.",
+    Icon: Bot,
     gradient: 'from-[#6B7EF2] to-[#5563e5]',
     glowColor: 'rgba(107, 126, 242, 0.25)',
   },
   {
     question: 'Does the agent need access to my production environment?',
-    answer:
-      'Not unless you want it to. The framework is designed to operate at the repo and PR level by default, with optional deeper integrations into CI/CD and staging environments that you control explicitly.',
-    icon: '🔒',
+    answer: 'Not unless you want it to. The framework is designed to operate at the repo and PR level by default, with optional deeper integrations into CI/CD and staging environments that you control explicitly.',
+    Icon: Lock,
     gradient: 'from-[#8B5CF6] to-[#7C3AED]',
     glowColor: 'rgba(139, 92, 246, 0.25)',
   },
   {
     question: 'How is this different from GitHub Copilot or Cursor?',
-    answer:
-      "Those tools augment a single developer's typing. Our framework is designed for end-to-end autonomous task execution — planning, writing, testing, and iterating across the entire codebase, not just the file in front of you.",
-    icon: '⚡',
+    answer: "Those tools augment a single developer's typing. Our framework is designed for end-to-end autonomous task execution — planning, writing, testing, and iterating across the entire codebase, not just the file in front of you.",
+    Icon: GitCompare,
     gradient: 'from-[#EC4899] to-[#DB2777]',
     glowColor: 'rgba(236, 72, 153, 0.25)',
   },
   {
     question: 'What languages and stacks does it support?',
-    answer:
-      "The current build has deep support for TypeScript, Python, Go, and Rust with React and Node.js ecosystems. We're expanding coverage actively — reach out to discuss your stack specifically.",
-    icon: '🛠️',
+    answer: "The current build has deep support for TypeScript, Python, Go, and Rust with React and Node.js ecosystems. We're expanding coverage actively — reach out to discuss your stack specifically.",
+    Icon: Code2,
     gradient: 'from-[#6B7EF2] via-[#8B5CF6] to-[#EC4899]',
     glowColor: 'rgba(107, 126, 242, 0.25)',
   },
   {
     question: 'How do I get access?',
-    answer:
-      "We're currently in a controlled early access phase. You can apply by reaching out via email. We onboard teams thoughtfully to make sure the experience is solid from day one.",
-    icon: '🚀',
+    answer: "We're currently in a controlled early access phase. You can apply by reaching out via email. We onboard teams thoughtfully to make sure the experience is solid from day one.",
+    Icon: Rocket,
     gradient: 'from-[#8B5CF6] to-[#EC4899]',
     glowColor: 'rgba(139, 92, 246, 0.25)',
   },
@@ -191,9 +187,9 @@ const FAQ = () => {
                           rotate: isOpen ? 10 : 0,
                         }}
                         transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-                        className={`flex-shrink-0 w-10 h-10 rounded-xl bg-gradient-to-br ${faq.gradient} flex items-center justify-center text-lg shadow-md`}
+                        className={`flex-shrink-0 w-10 h-10 rounded-xl bg-gradient-to-br ${faq.gradient} flex items-center justify-center shadow-md`}
                       >
-                        {faq.icon}
+                        <faq.Icon className="w-5 h-5 text-white" strokeWidth={1.5} />
                       </motion.div>
 
                       {/* Question text */}

@@ -1,5 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import { Mail, Rocket, MapPin } from 'lucide-react'
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
@@ -50,7 +51,7 @@ const Footer = () => {
             </p>
 
             <p className="text-white/25 text-xs flex items-center gap-2">
-              <span>🇨🇭</span>
+              <MapPin className="w-3 h-3 opacity-50" />
               <span>Switzerland · Serving teams globally</span>
             </p>
 
@@ -85,16 +86,13 @@ const Footer = () => {
 
             <div className="space-y-3 mb-6">
               <div className="flex items-center gap-3">
-                <span className="text-base">✉️</span>
-                <a
-                  href="mailto:amit@autocodelabs.com"
-                  className="text-white/45 hover:text-white/90 text-sm transition-colors duration-200"
-                >
+                <Mail className="w-4 h-4 text-white/30 flex-shrink-0" />
+                <a href="mailto:amit@autocodelabs.com" className="text-white/45 hover:text-white/90 text-sm transition-colors duration-200">
                   amit@autocodelabs.com
                 </a>
               </div>
               <div className="flex items-center gap-3">
-                <span className="text-base">🚀</span>
+                <Rocket className="w-4 h-4 text-white/30 flex-shrink-0" />
                 <span className="text-white/45 text-sm">Early Access Available</span>
               </div>
             </div>

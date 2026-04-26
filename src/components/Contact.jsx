@@ -1,16 +1,17 @@
 import React, { useState, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import emailjs from 'emailjs-com'
+import { MapPin, Mail, Rocket, ArrowRight, Send } from 'lucide-react'
 
 const contactInfo = [
   {
-    icon: '📍',
+    Icon: MapPin,
     label: 'Address',
     value: 'Switzerland · Serving teams globally',
     gradient: 'from-[#6B7EF2] to-[#5563e5]',
   },
   {
-    icon: '✉️',
+    Icon: Mail,
     label: 'Email',
     value: 'amit@autocodelabs.com',
     href: 'mailto:amit@autocodelabs.com',
@@ -154,13 +155,15 @@ const Contact = () => {
               />
 
               <div className="relative z-10 p-10 flex flex-col flex-1">
-                {/* Floating rocket */}
+                {/* Floating rocket icon */}
                 <motion.div
-                  className="text-6xl mb-8 inline-block"
+                  className="mb-8 inline-block"
                   animate={{ y: [0, -12, 0] }}
                   transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}
                 >
-                  🚀
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#6B7EF2] via-[#8B5CF6] to-[#EC4899] flex items-center justify-center shadow-xl">
+                    <Rocket className="w-8 h-8 text-white" strokeWidth={1.5} />
+                  </div>
                 </motion.div>
 
                 <h3 className="text-2xl font-bold font-display text-gray-900 mb-3">
@@ -186,8 +189,8 @@ const Contact = () => {
                       className="flex items-center gap-4 group"
                     >
                       {/* Icon badge */}
-                      <div className={`flex-shrink-0 w-11 h-11 rounded-xl bg-gradient-to-br ${item.gradient} flex items-center justify-center text-xl shadow-md`}>
-                        {item.icon}
+                      <div className={`flex-shrink-0 w-11 h-11 rounded-xl bg-gradient-to-br ${item.gradient} flex items-center justify-center shadow-md`}>
+                        <item.Icon className="w-5 h-5 text-white" strokeWidth={1.5} />
                       </div>
 
                       <div>

@@ -1,11 +1,12 @@
 import React, { useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
+import { Zap, Brain, RefreshCw, Target, ArrowRight } from 'lucide-react'
 
 const services = [
   {
     title: 'Autonomous Task Execution',
     description: 'The agent breaks down complex tickets into executable subtasks, runs them in the right order, and surfaces results — without hand-holding.',
-    icon: '⚡',
+    Icon: Zap,
     gradient: 'from-[#6B7EF2] to-[#5563e5]',
     glowColor: 'rgba(107, 126, 242, 0.3)',
     features: ['Smart Task Breakdown', 'Sequential Execution', 'Auto-validation'],
@@ -13,7 +14,7 @@ const services = [
   {
     title: 'Codebase-Aware Planning',
     description: 'Understands your architecture, patterns, and conventions. Plans new features with full context of what already exists.',
-    icon: '🧠',
+    Icon: Brain,
     gradient: 'from-[#8B5CF6] to-[#7C3AED]',
     glowColor: 'rgba(139, 92, 246, 0.3)',
     features: ['Architecture Analysis', 'Pattern Recognition', 'Context-Aware'],
@@ -21,7 +22,7 @@ const services = [
   {
     title: 'Workflow Automation',
     description: 'CI/CD triggers, PR drafts, test generation, and documentation — all handled by the agent as part of the natural dev loop.',
-    icon: '🔄',
+    Icon: RefreshCw,
     gradient: 'from-[#EC4899] to-[#DB2777]',
     glowColor: 'rgba(236, 72, 153, 0.3)',
     features: ['CI/CD Integration', 'Auto PR Creation', 'Test Generation'],
@@ -29,7 +30,7 @@ const services = [
   {
     title: 'Multi-Agent Orchestration',
     description: 'Coordinate multiple specialized agents across frontend, backend, testing, and infra — all under a single coherent instruction layer.',
-    icon: '🎯',
+    Icon: Target,
     gradient: 'from-[#6B7EF2] via-[#8B5CF6] to-[#EC4899]',
     glowColor: 'rgba(107, 126, 242, 0.3)',
     features: ['Agent Coordination', 'Cross-Stack Support', 'Unified Control'],
@@ -184,8 +185,8 @@ const Services = () => {
                             repeat: hoveredIndex === index ? Infinity : 0,
                           }}
                         />
-                        <div className={`relative text-5xl bg-gradient-to-br ${service.gradient} bg-clip-text text-transparent p-3 rounded-xl`}>
-                          {service.icon}
+                        <div className={`relative p-3 rounded-xl bg-gradient-to-br ${service.gradient}`}>
+                          <service.Icon className="w-8 h-8 text-white" strokeWidth={1.5} />
                         </div>
                       </motion.div>
 
@@ -226,13 +227,7 @@ const Services = () => {
                         whileHover={{ x: 3 }}
                       >
                         <span className={`inline-flex items-center gap-1 text-xs font-semibold bg-gradient-to-r ${service.gradient} bg-clip-text text-transparent cursor-pointer`}>
-                          Learn more
-                          <motion.span
-                            animate={{ x: hoveredIndex === index ? [0, 3, 0] : 0 }}
-                            transition={{ duration: 1, repeat: hoveredIndex === index ? Infinity : 0 }}
-                          >
-                            →
-                          </motion.span>
+                          Learn more <ArrowRight className="w-3 h-3" />
                         </span>
                       </motion.div>
                     </div>

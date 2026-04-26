@@ -1,12 +1,13 @@
 import React, { useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
+import { PackageOpen, Target, Rocket } from 'lucide-react'
 
 const steps = [
   {
     number: '01',
     title: 'Onboard Your Codebase',
     description: 'Connect your repo. The agent indexes your structure, patterns, and dependencies in minutes.',
-    icon: '📦',
+    Icon: PackageOpen,
     gradient: 'from-[#6B7EF2] to-[#5563e5]',
     glowColor: 'rgba(107, 126, 242, 0.4)',
     features: ['Git Integration', 'Pattern Analysis', 'Dependency Mapping']
@@ -15,7 +16,7 @@ const steps = [
     number: '02',
     title: 'Define Your Intent',
     description: "Give it a goal — a feature, a bug fix, a refactor. It breaks it down into an execution plan and asks only what it can't infer.",
-    icon: '🎯',
+    Icon: Target,
     gradient: 'from-[#8B5CF6] to-[#7C3AED]',
     glowColor: 'rgba(139, 92, 246, 0.4)',
     features: ['Natural Language', 'Smart Planning', 'Context Inference']
@@ -24,7 +25,7 @@ const steps = [
     number: '03',
     title: 'Review & Ship',
     description: 'Outputs land in your workflow — as PRs, diffs, or deployed branches. You stay in control of the final call.',
-    icon: '🚀',
+    Icon: Rocket,
     gradient: 'from-[#EC4899] to-[#DB2777]',
     glowColor: 'rgba(236, 72, 153, 0.4)',
     features: ['PR Generation', 'Code Review', 'Deploy Ready']
@@ -186,19 +187,18 @@ const HowItWorks = () => {
                       </div>
                     </motion.div>
 
-                    {/* Icon with Animation */}
+                    {/* Icon */}
                     <motion.div
-                      className="text-6xl mb-6"
+                      className="mb-6"
                       animate={{
                         y: activeStep === index ? [0, -10, 0] : 0,
                         rotate: activeStep === index ? [0, 5, -5, 0] : 0,
                       }}
-                      transition={{
-                        duration: 2,
-                        repeat: activeStep === index ? Infinity : 0,
-                      }}
+                      transition={{ duration: 2, repeat: activeStep === index ? Infinity : 0 }}
                     >
-                      {step.icon}
+                      <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${step.gradient} flex items-center justify-center shadow-lg`}>
+                        <step.Icon className="w-7 h-7 text-white" strokeWidth={1.5} />
+                      </div>
                     </motion.div>
 
                     {/* Title */}

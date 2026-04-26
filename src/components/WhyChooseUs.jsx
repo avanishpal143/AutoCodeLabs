@@ -1,48 +1,43 @@
 import React, { useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
+import { Building2, Bot, Brain, Puzzle, Zap, Shield, Rocket } from 'lucide-react'
 
 const reasons = [
   {
-    icon: '🏢',
+    Icon: Building2,
     title: 'Founded by a Google Staff SWE',
     description: 'Built with deep expertise in large-scale engineering systems, not just AI wrappers',
     gradient: 'from-[#6B7EF2] to-[#5563e5]',
-    position: { top: '10%', right: '15%' }
   },
   {
-    icon: '🤖',
+    Icon: Bot,
     title: 'End-to-end Agentic',
     description: "Doesn't just suggest code; plans, writes, tests, and iterates autonomously",
     gradient: 'from-[#8B5CF6] to-[#7C3AED]',
-    position: { top: '35%', right: '5%' }
   },
   {
-    icon: '🧠',
+    Icon: Brain,
     title: 'Context-First Design',
     description: 'The agent understands your codebase before it touches it',
     gradient: 'from-[#EC4899] to-[#DB2777]',
-    position: { bottom: '35%', right: '10%' }
   },
   {
-    icon: '🔧',
+    Icon: Puzzle,
     title: 'Composable Architecture',
     description: 'Plug into your existing stack; no forced migrations',
     gradient: 'from-[#6B7EF2] via-[#8B5CF6] to-[#EC4899]',
-    position: { bottom: '10%', right: '20%' }
   },
   {
-    icon: '⚡',
+    Icon: Zap,
     title: 'Enterprise-Grade Reliability',
     description: 'Built with the standards of teams shipping at scale',
     gradient: 'from-[#8B5CF6] to-[#EC4899]',
-    position: { top: '20%', left: '10%' }
   },
   {
-    icon: '🇨🇭',
+    Icon: Shield,
     title: 'Switzerland-Based',
     description: 'Privacy-conscious, GDPR-aligned infrastructure',
     gradient: 'from-[#6B7EF2] to-[#8B5CF6]',
-    position: { bottom: '20%', left: '15%' }
   },
 ]
 
@@ -165,16 +160,12 @@ const WhyChooseUs = () => {
                   <div className="relative z-10 text-center">
                     <motion.div
                       className="inline-block mb-6"
-                      animate={{
-                        y: [0, -20, 0],
-                      }}
-                      transition={{
-                        duration: 4,
-                        repeat: Infinity,
-                        ease: "easeInOut"
-                      }}
+                      animate={{ y: [0, -20, 0] }}
+                      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                     >
-                      <div className="text-8xl">🚀</div>
+                      <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#6B7EF2] via-[#8B5CF6] to-[#EC4899] flex items-center justify-center mx-auto shadow-2xl">
+                        <Rocket className="w-10 h-10 text-white" strokeWidth={1.5} />
+                      </div>
                     </motion.div>
                     
                     <h3 className="text-2xl font-bold text-gray-900 mb-3">
@@ -270,8 +261,8 @@ const WhyChooseUs = () => {
                         }}
                         transition={{ duration: 0.5 }}
                       >
-                        <div className={`text-4xl bg-gradient-to-br ${reason.gradient} bg-clip-text text-transparent p-3 rounded-xl backdrop-blur-sm`}>
-                          {reason.icon}
+                        <div className={`p-3 rounded-xl bg-gradient-to-br ${reason.gradient}`}>
+                          <reason.Icon className="w-5 h-5 text-white" strokeWidth={1.5} />
                         </div>
                       </motion.div>
 

@@ -4,10 +4,11 @@
   "type": "module",
   "private": true,
   "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "emailjs-com": "^3.2.0",
     "framer-motion": "^10.16.4",
-    "emailjs-com": "^3.2.0"
+    "lucide-react": "1.11.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.2.0",
