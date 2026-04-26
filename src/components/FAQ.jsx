@@ -5,7 +5,7 @@ import { Bot, Lock, GitCompare, Code2, Rocket } from 'lucide-react'
 const faqs = [
   {
     question: 'Is this just a wrapper around GPT or another LLM?',
-    answer: "No. While large language models are part of the engine, the framework is a purpose-built orchestration layer with its own planning, memory, and execution architecture. The intelligence isn't in the model — it's in the system around it.",
+    answer: "No. LLMs are part of the engine, but the framework is a purpose-built orchestration layer with its own planning, memory, and execution architecture. The intelligence is in the system, not just the model.",
     Icon: Bot,
     gradient: 'from-[#6B7EF2] to-[#5563e5]',
     glowColor: 'rgba(107, 126, 242, 0.25)',
@@ -19,21 +19,21 @@ const faqs = [
   },
   {
     question: 'How is this different from GitHub Copilot or Cursor?',
-    answer: "Those tools augment a single developer's typing. Our framework is designed for end-to-end autonomous task execution — planning, writing, testing, and iterating across the entire codebase, not just the file in front of you.",
+    answer: "Those tools help one developer type faster. Our framework handles end-to-end autonomous execution: planning, writing, testing, and iterating across the entire codebase.",
     Icon: GitCompare,
     gradient: 'from-[#EC4899] to-[#DB2777]',
     glowColor: 'rgba(236, 72, 153, 0.25)',
   },
   {
     question: 'What languages and stacks does it support?',
-    answer: "The current build has deep support for TypeScript, Python, Go, and Rust with React and Node.js ecosystems. We're expanding coverage actively — reach out to discuss your stack specifically.",
+    answer: "Deep support for TypeScript, Python, Go, and Rust with React and Node.js ecosystems. Expanding actively. Reach out to discuss your stack.",
     Icon: Code2,
     gradient: 'from-[#6B7EF2] via-[#8B5CF6] to-[#EC4899]',
     glowColor: 'rgba(107, 126, 242, 0.25)',
   },
   {
     question: 'How do I get access?',
-    answer: "We're currently in a controlled early access phase. You can apply by reaching out via email. We onboard teams thoughtfully to make sure the experience is solid from day one.",
+    answer: "We're in a controlled early access phase. Apply via email and we'll onboard you thoughtfully to ensure a solid experience from day one.",
     Icon: Rocket,
     gradient: 'from-[#8B5CF6] to-[#EC4899]',
     glowColor: 'rgba(139, 92, 246, 0.25)',
@@ -43,56 +43,39 @@ const faqs = [
 const FAQ = () => {
   const [openIndex, setOpenIndex] = useState(null)
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: '-100px' })
+  const isInView = useInView(ref, { once: true, margin: '0px' })
 
   return (
     <section
       id="faq"
       className="py-16 px-6 relative bg-gradient-to-b from-white via-gray-50 to-white overflow-hidden"
     >
-      {/* Animated background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute inset-0 bg-[linear-gradient(rgba(107,126,242,0.03)_2px,transparent_2px),linear-gradient(90deg,rgba(107,126,242,0.03)_2px,transparent_2px)] bg-[size:80px_80px]" />
-        <motion.div
-          className="absolute top-1/4 -left-32 w-[500px] h-[500px] bg-[#6B7EF2]/6 rounded-full blur-3xl"
-          animate={{ x: [0, 80, 0], y: [0, 60, 0] }}
-          transition={{ duration: 18, repeat: Infinity, ease: 'easeInOut' }}
-        />
-        <motion.div
-          className="absolute bottom-1/4 -right-32 w-[500px] h-[500px] bg-[#EC4899]/6 rounded-full blur-3xl"
-          animate={{ x: [0, -80, 0], y: [0, -60, 0] }}
-          transition={{ duration: 22, repeat: Infinity, ease: 'easeInOut' }}
-        />
-        <motion.div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#8B5CF6]/4 rounded-full blur-3xl"
-          animate={{ scale: [1, 1.15, 1] }}
-          transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
-        />
       </div>
 
       <div className="max-w-3xl mx-auto relative z-10">
         <motion.div
           ref={ref}
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.3 }}
         >
-          {/* Header */}
           <div className="text-center mb-10">
             <motion.span
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={isInView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ delay: 0.2 }}
+              initial={{ opacity: 0 }}
+              animate={isInView ? { opacity: 1 } : {}}
+              transition={{ duration: 0.3 }}
               className="inline-block px-4 py-1.5 mb-6 text-xs font-semibold tracking-wider uppercase bg-gradient-to-r from-[#8B5CF6]/10 to-[#EC4899]/10 text-[#8B5CF6] border border-[#8B5CF6]/30 rounded-full backdrop-blur-sm"
             >
               FAQs
             </motion.span>
 
             <motion.h2
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.3 }}
-              className="text-4xl md:text-5xl font-bold font-display mb-4 leading-tight"
+              transition={{ delay: 0.05, duration: 0.3 }}
+              className="text-3xl md:text-4xl font-semibold font-display mb-4 leading-tight"
             >
               Common{' '}
               <span className="relative inline-block">
@@ -109,9 +92,9 @@ const FAQ = () => {
             </motion.h2>
 
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.4 }}
+              initial={{ opacity: 0 }}
+              animate={isInView ? { opacity: 1 } : {}}
+              transition={{ delay: 0.1, duration: 0.3 }}
               className="text-gray-500 text-base max-w-xl mx-auto"
             >
               Everything you need to know before getting started.
@@ -126,9 +109,9 @@ const FAQ = () => {
               return (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, y: 30 }}
+                  initial={{ opacity: 0, y: 10 }}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ delay: 0.4 + index * 0.1, duration: 0.5 }}
+                  transition={{ delay: index * 0.05, duration: 0.25 }}
                   className="group relative"
                 >
                   {/* Glow behind card when open */}
@@ -275,7 +258,7 @@ const FAQ = () => {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 1.2 }}
+            transition={{ delay: 0.3 }}
             className="mt-14 text-center"
           >
             <p className="text-gray-500 text-sm mb-5">

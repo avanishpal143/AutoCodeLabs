@@ -18,7 +18,7 @@ const testimonials = [
     Icon: Rocket,
   },
   {
-    text: "The orchestration layer is what sets this apart. Having specialized agents coordinate across the stack without breaking each other's work — that's a hard problem they've solved really well.",
+    text: "The orchestration layer is what sets this apart. Specialized agents coordinating across the stack without breaking each other's work. That's a hard problem, solved well.",
     name: 'João R.',
     role: 'Principal Engineer, Platform team, Lisbon',
     gradient: 'from-[#EC4899] to-[#DB2777]',
@@ -32,7 +32,7 @@ const testimonials = [
     Icon: Star,
   },
   {
-    text: "What I appreciate most is what it doesn't do — it doesn't guess blindly or hallucinate architecture decisions. It asks smart clarifying questions and then executes with discipline.",
+    text: "What I appreciate most is what it doesn't do. It doesn't guess blindly or hallucinate architecture decisions. It asks smart clarifying questions and then executes with discipline.",
     name: 'Daniel K.',
     role: 'Solo founder & developer, Amsterdam',
     gradient: 'from-[#8B5CF6] to-[#EC4899]',
@@ -45,7 +45,7 @@ const AUTO_INTERVAL = 3000
 
 const Testimonials = () => {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: "-100px" })
+  const isInView = useInView(ref, { once: true, margin: '0px' })
   const [current, setCurrent] = useState(0)
   const timerRef = useRef(null)
 
@@ -75,27 +75,16 @@ const Testimonials = () => {
 
   return (
     <section id="testimonials" className="py-16 px-6 relative bg-white overflow-hidden">
-      {/* Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute inset-0 bg-[linear-gradient(rgba(107,126,242,0.02)_2px,transparent_2px),linear-gradient(90deg,rgba(107,126,242,0.02)_2px,transparent_2px)] bg-[size:80px_80px]" />
-        <motion.div
-          className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#6B7EF2]/5 rounded-full blur-3xl"
-          animate={{ x: [0, 80, 0], y: [0, -40, 0] }}
-          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div
-          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#EC4899]/5 rounded-full blur-3xl"
-          animate={{ x: [0, -80, 0], y: [0, 40, 0] }}
-          transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
-        />
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
           ref={ref}
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.3 }}
         >
           {/* Header */}
           <div className="text-center mb-10">
@@ -112,7 +101,7 @@ const Testimonials = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.3 }}
-              className="text-4xl md:text-5xl font-bold font-display mb-4 leading-tight"
+              className="text-3xl md:text-4xl font-semibold font-display mb-4 leading-tight"
             >
               What Early Collaborators{' '}
               <span className="bg-gradient-to-r from-[#6B7EF2] via-[#8B5CF6] to-[#EC4899] bg-clip-text text-transparent">

@@ -2,6 +2,8 @@ import React, { useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { Building2, Bot, Brain, Puzzle, Zap, Shield, Rocket } from 'lucide-react'
 
+const scrollToContact = () => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
+
 const reasons = [
   {
     Icon: Building2,
@@ -12,7 +14,7 @@ const reasons = [
   {
     Icon: Bot,
     title: 'End-to-end Agentic',
-    description: "Doesn't just suggest code; plans, writes, tests, and iterates autonomously",
+    description: "Plans, writes, tests, and iterates autonomously. Not just suggestions.",
     gradient: 'from-[#8B5CF6] to-[#7C3AED]',
   },
   {
@@ -43,45 +45,21 @@ const reasons = [
 
 const WhyChooseUs = () => {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: "-100px" })
+  const isInView = useInView(ref, { once: true, margin: '0px' })
   const [hoveredIndex, setHoveredIndex] = useState(null)
 
   return (
     <section id="why-choose-us" className="py-16 px-6 relative bg-gradient-to-b from-white via-gray-50 to-white overflow-hidden">
-      {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <motion.div
-          className="absolute top-1/4 -left-20 w-96 h-96 bg-[#6B7EF2]/5 rounded-full blur-3xl"
-          animate={{
-            x: [0, 100, 0],
-            y: [0, 50, 0],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-        <motion.div
-          className="absolute bottom-1/4 -right-20 w-96 h-96 bg-[#EC4899]/5 rounded-full blur-3xl"
-          animate={{
-            x: [0, -100, 0],
-            y: [0, -50, 0],
-          }}
-          transition={{
-            duration: 25,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(107,126,242,0.03)_2px,transparent_2px),linear-gradient(90deg,rgba(107,126,242,0.03)_2px,transparent_2px)] bg-[size:80px_80px]" />
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
           ref={ref}
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.3 }}
         >
           {/* Header */}
           <div className="text-center mb-10">
@@ -100,7 +78,7 @@ const WhyChooseUs = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.3 }}
-              className="text-2xl md:text-4xl font-bold font-display mb-6 leading-tight max-w-4xl mx-auto"
+              className="text-3xl md:text-4xl font-semibold font-display mb-4 leading-tight max-w-3xl mx-auto"
             >
               Not Another Copilot.{' '}
               <span className="relative inline-block">
@@ -120,9 +98,9 @@ const WhyChooseUs = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.4 }}
-              className="text-lg text-gray-600 max-w-3xl mx-auto"
+              className="text-base text-gray-600 max-w-2xl mx-auto"
             >
-              Built with deep expertise from Google-scale engineering, designed for teams who ship real software.
+              Google-scale engineering expertise, built for teams shipping real software.
             </motion.p>
           </div>
 
@@ -130,9 +108,9 @@ const WhyChooseUs = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left Side - Illustration/Visual */}
             <motion.div
-              initial={{ opacity: 0, x: -50 }}
+              initial={{ opacity: 0, x: -20 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ delay: 0.5, duration: 0.8 }}
+              transition={{ delay: 0.1, duration: 0.3 }}
               className="relative"
             >
               {/* Central Illustration Card */}
@@ -229,13 +207,14 @@ const WhyChooseUs = () => {
               {reasons.map((reason, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, x: 50 }}
+                  initial={{ opacity: 0, x: 20 }}
                   animate={isInView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ delay: 0.6 + index * 0.1, duration: 0.6 }}
+                  transition={{ delay: index * 0.05, duration: 0.3 }}
                   onHoverStart={() => setHoveredIndex(index)}
                   onHoverEnd={() => setHoveredIndex(null)}
                   whileHover={{ x: 10, scale: 1.02 }}
-                  className="group relative"
+                  className="group relative cursor-pointer"
+                  onClick={scrollToContact}
                 >
                   <div className="relative bg-white rounded-2xl p-6 border border-gray-200 shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden">
                     {/* Gradient background on hover */}

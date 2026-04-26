@@ -1,6 +1,8 @@
 import React, { useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { Briefcase, Building2, Wrench, Rocket, CheckCircle2, ArrowRight } from 'lucide-react'
+import { Briefcase, Building2, Wrench, Rocket, ArrowRight } from 'lucide-react'
+
+const scrollToContact = () => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
 
 const industries = [
   {
@@ -29,7 +31,7 @@ const industries = [
   },
   {
     title: 'Startups at Scale',
-    description: 'Punch above your weight. Let the agent handle the execution so your team handles the vision.',
+    description: 'Let the agent handle execution so your team handles the vision.',
     Icon: Rocket,
     gradient: 'from-[#6B7EF2] via-[#8B5CF6] to-[#EC4899]',
     glowColor: 'rgba(107, 126, 242, 0.3)',
@@ -39,39 +41,28 @@ const industries = [
 
 const Industries = () => {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: "-100px" })
+  const isInView = useInView(ref, { once: true, margin: '0px' })
   const [hoveredIndex, setHoveredIndex] = useState(null)
 
   return (
     <section id="industries" className="py-16 px-6 relative bg-gradient-to-b from-white via-gray-50 to-white overflow-hidden">
-      {/* Animated background pattern */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute inset-0 bg-[linear-gradient(rgba(107,126,242,0.03)_2px,transparent_2px),linear-gradient(90deg,rgba(107,126,242,0.03)_2px,transparent_2px)] bg-[size:80px_80px]" />
-        <motion.div
-          className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#6B7EF2]/5 rounded-full blur-3xl"
-          animate={{ x: [0, 100, 0], y: [0, -50, 0], scale: [1, 1.2, 1] }}
-          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div
-          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#8B5CF6]/5 rounded-full blur-3xl"
-          animate={{ x: [0, -100, 0], y: [0, 50, 0], scale: [1.2, 1, 1.2] }}
-          transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
-        />
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
           ref={ref}
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.3 }}
         >
           {/* Header Section */}
           <div className="text-center mb-10">
             <motion.span
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={isInView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ delay: 0.2 }}
+              initial={{ opacity: 0 }}
+              animate={isInView ? { opacity: 1 } : {}}
+              transition={{ duration: 0.3 }}
               className="inline-block px-4 py-1.5 mb-6 text-xs font-semibold tracking-wider uppercase bg-gradient-to-r from-[#6B7EF2]/10 to-[#8B5CF6]/10 text-[#6B7EF2] border border-[#6B7EF2]/30 rounded-full backdrop-blur-sm"
             >
               Industries
@@ -81,7 +72,7 @@ const Industries = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.3 }}
-              className="text-4xl md:text-6xl font-bold font-display mb-6 leading-tight max-w-4xl mx-auto"
+              className="text-3xl md:text-4xl font-semibold font-display mb-4 leading-tight max-w-3xl mx-auto"
             >
               Built for Teams Shipping{' '}
               <span className="relative inline-block">
@@ -101,9 +92,9 @@ const Industries = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.4 }}
-              className="text-lg text-gray-600 max-w-3xl mx-auto"
+              className="text-base text-gray-600 max-w-2xl mx-auto"
             >
-              From startups to enterprises, our agentic framework adapts to your industry needs.
+              Our framework adapts to your industry needs, from startups to enterprises.
             </motion.p>
           </div>
 
@@ -112,9 +103,9 @@ const Industries = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">              {industries.map((industry, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, y: 50 }}
+                  initial={{ opacity: 0, y: 20 }}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ delay: 0.5 + index * 0.1, duration: 0.6 }}
+                  transition={{ delay: index * 0.05, duration: 0.3 }}
                   onHoverStart={() => setHoveredIndex(index)}
                   onHoverEnd={() => setHoveredIndex(null)}
                   className="group relative"
@@ -179,9 +170,9 @@ const Industries = () => {
                         {industry.features.map((feature, featureIndex) => (
                           <motion.div
                             key={featureIndex}
-                            initial={{ opacity: 0, x: -20 }}
-                            animate={isInView ? { opacity: 1, x: 0 } : {}}
-                            transition={{ delay: 0.7 + index * 0.1 + featureIndex * 0.1 }}
+                            initial={{ opacity: 0 }}
+                            animate={isInView ? { opacity: 1 } : {}}
+                            transition={{ delay: index * 0.05, duration: 0.2 }}
                             className="flex items-center gap-2"
                           >
                             <motion.div
@@ -197,10 +188,10 @@ const Industries = () => {
                         className="pt-3 border-t border-gray-200 group-hover:border-transparent transition-colors"
                         whileHover={{ x: 3 }}
                       >
-                        <span className={`inline-flex items-center gap-1 text-xs font-semibold bg-gradient-to-r ${industry.gradient} bg-clip-text text-transparent cursor-pointer`}>
+                        <button onClick={scrollToContact} className={`inline-flex items-center gap-1 text-xs font-semibold bg-gradient-to-r ${industry.gradient} bg-clip-text text-transparent cursor-pointer`}>
                           Learn more
                           <ArrowRight className="w-3 h-3" />
-                        </span>
+                        </button>
                       </motion.div>
                     </div>
 

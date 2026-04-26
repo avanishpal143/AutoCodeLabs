@@ -42,6 +42,9 @@ const Footer = () => {
                 src="/logo-removebg-preview.png"
                 alt="AutoCodeLabs"
                 className="h-10 w-auto object-contain"
+                style={{
+                  filter: 'brightness(1.5) contrast(1.8) saturate(2) drop-shadow(0 0 2px rgba(180,160,255,0.9)) drop-shadow(0 0 4px rgba(180,160,255,0.8)) drop-shadow(0 0 10px rgba(139,92,246,0.7)) drop-shadow(0 0 20px rgba(107,126,242,0.5))',
+                }}
               />
             </motion.div>
 
@@ -87,8 +90,8 @@ const Footer = () => {
             <div className="space-y-3 mb-6">
               <div className="flex items-center gap-3">
                 <Mail className="w-4 h-4 text-white/30 flex-shrink-0" />
-                <a href="mailto:amit@autocodelabs.com" className="text-white/45 hover:text-white/90 text-sm transition-colors duration-200">
-                  amit@autocodelabs.com
+                <a href="mailto:info@autocodelabs.net" className="text-white/45 hover:text-white/90 text-sm transition-colors duration-200">
+                  info@autocodelabs.net
                 </a>
               </div>
               <div className="flex items-center gap-3">

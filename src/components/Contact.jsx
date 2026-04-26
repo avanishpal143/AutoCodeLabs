@@ -13,8 +13,8 @@ const contactInfo = [
   {
     Icon: Mail,
     label: 'Email',
-    value: 'amit@autocodelabs.com',
-    href: 'mailto:amit@autocodelabs.com',
+    value: 'info@autocodelabs.net',
+    href: 'mailto:info@autocodelabs.net',
     gradient: 'from-[#8B5CF6] to-[#7C3AED]',
   },
 ]
@@ -26,7 +26,7 @@ const Contact = () => {
   const [focusedField, setFocusedField] = useState(null)
 
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: '-100px' })
+  const isInView = useInView(ref, { once: true, margin: '0px' })
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
@@ -56,6 +56,9 @@ const Contact = () => {
           from_name: formData.name,
           from_email: formData.email,
           message: formData.message,
+          name: formData.name,
+          email: formData.email,
+          title: `Message from ${formData.name}`,
         },
         import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       )
@@ -71,27 +74,16 @@ const Contact = () => {
 
   return (
     <section id="contact" className="py-16 px-6 relative bg-gradient-to-b from-white via-gray-50 to-white overflow-hidden">
-      {/* Animated background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute inset-0 bg-[linear-gradient(rgba(107,126,242,0.03)_2px,transparent_2px),linear-gradient(90deg,rgba(107,126,242,0.03)_2px,transparent_2px)] bg-[size:80px_80px]" />
-        <motion.div
-          className="absolute top-1/4 -left-32 w-[500px] h-[500px] bg-[#6B7EF2]/6 rounded-full blur-3xl"
-          animate={{ x: [0, 80, 0], y: [0, 60, 0] }}
-          transition={{ duration: 18, repeat: Infinity, ease: 'easeInOut' }}
-        />
-        <motion.div
-          className="absolute bottom-1/4 -right-32 w-[500px] h-[500px] bg-[#EC4899]/6 rounded-full blur-3xl"
-          animate={{ x: [0, -80, 0], y: [0, -60, 0] }}
-          transition={{ duration: 22, repeat: Infinity, ease: 'easeInOut' }}
-        />
       </div>
 
       <div className="max-w-6xl mx-auto relative z-10">
         <motion.div
           ref={ref}
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.3 }}
         >
           {/* Header */}
           <div className="text-center mb-10">
@@ -108,12 +100,12 @@ const Contact = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.3 }}
-              className="text-4xl md:text-5xl font-bold font-display mb-4 leading-tight"
+              className="text-3xl md:text-4xl font-semibold font-display mb-4 leading-tight"
             >
-              Ready to Rethink How Your Team{' '}
+              Ready to Ship Faster?{' '}
               <span className="relative inline-block">
                 <span className="bg-gradient-to-r from-[#6B7EF2] via-[#8B5CF6] to-[#EC4899] bg-clip-text text-transparent">
-                  Builds Software?
+                  Let's Talk.
                 </span>
                 <motion.span
                   className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-[#6B7EF2] via-[#8B5CF6] to-[#EC4899] rounded-full"
@@ -139,9 +131,9 @@ const Contact = () => {
 
             {/* LEFT — Content card */}
             <motion.div
-              initial={{ opacity: 0, x: -50 }}
+              initial={{ opacity: 0, x: -20 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ delay: 0.5, duration: 0.7 }}
+              transition={{ delay: 0.1, duration: 0.3 }}
               className="relative bg-white rounded-3xl border border-gray-200 shadow-lg overflow-hidden flex flex-col"
             >
               {/* Gradient top bar */}
@@ -174,8 +166,7 @@ const Contact = () => {
                 </h3>
 
                 <p className="text-gray-600 leading-relaxed text-sm mb-8">
-                  Whether you're a startup moving fast or an engineering org looking to scale
-                  intelligently — we'd love to talk. Early access spots are limited.
+                  Startup or enterprise, we'd love to talk. Early access spots are limited.
                 </p>
 
                 {/* Contact info items */}
@@ -230,9 +221,9 @@ const Contact = () => {
 
             {/* RIGHT — Form card */}
             <motion.div
-              initial={{ opacity: 0, x: 50 }}
+              initial={{ opacity: 0, x: 20 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ delay: 0.6, duration: 0.7 }}
+              transition={{ delay: 0.15, duration: 0.3 }}
               className="relative bg-white rounded-3xl border border-gray-200 shadow-lg overflow-hidden flex flex-col"
             >
               {/* Gradient top bar */}

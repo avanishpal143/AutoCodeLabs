@@ -1,7 +1,6 @@
 import React, { Suspense, lazy } from 'react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
-import BackgroundEffects from './components/BackgroundEffects'
 
 // Lazy load everything below the fold — loads only when needed
 const About       = lazy(() => import('./components/About'))
@@ -14,13 +13,11 @@ const FAQ         = lazy(() => import('./components/FAQ'))
 const Contact     = lazy(() => import('./components/Contact'))
 const Footer      = lazy(() => import('./components/Footer'))
 
-// Minimal fallback — invisible, no layout shift
 const SectionFallback = () => <div style={{ minHeight: '200px' }} />
 
 function App() {
   return (
     <div className="relative min-h-screen overflow-hidden">
-      <BackgroundEffects />
       <Navbar />
       <main>
         {/* Hero loads immediately — above the fold */}

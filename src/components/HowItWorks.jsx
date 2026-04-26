@@ -2,6 +2,8 @@ import React, { useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { PackageOpen, Target, Rocket } from 'lucide-react'
 
+const scrollToContact = () => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
+
 const steps = [
   {
     number: '01',
@@ -15,7 +17,7 @@ const steps = [
   {
     number: '02',
     title: 'Define Your Intent',
-    description: "Give it a goal — a feature, a bug fix, a refactor. It breaks it down into an execution plan and asks only what it can't infer.",
+    description: "Give it a goal: a feature, a bug fix, a refactor. It builds an execution plan and asks only what it can't infer.",
     Icon: Target,
     gradient: 'from-[#8B5CF6] to-[#7C3AED]',
     glowColor: 'rgba(139, 92, 246, 0.4)',
@@ -24,7 +26,7 @@ const steps = [
   {
     number: '03',
     title: 'Review & Ship',
-    description: 'Outputs land in your workflow — as PRs, diffs, or deployed branches. You stay in control of the final call.',
+    description: 'Outputs land in your workflow as PRs, diffs, or deployed branches. You stay in control of the final call.',
     Icon: Rocket,
     gradient: 'from-[#EC4899] to-[#DB2777]',
     glowColor: 'rgba(236, 72, 153, 0.4)',
@@ -34,47 +36,21 @@ const steps = [
 
 const HowItWorks = () => {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, margin: "-100px" })
+  const isInView = useInView(ref, { once: true, margin: '0px' })
   const [activeStep, setActiveStep] = useState(0)
 
   return (
     <section id="how-it-works" className="py-16 px-6 relative bg-gradient-to-b from-gray-50 via-white to-gray-50 overflow-hidden">
-      {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <motion.div
-          className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#6B7EF2]/5 rounded-full blur-3xl"
-          animate={{
-            x: [0, 100, 0],
-            y: [0, -50, 0],
-            scale: [1, 1.2, 1],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-        <motion.div
-          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#EC4899]/5 rounded-full blur-3xl"
-          animate={{
-            x: [0, -100, 0],
-            y: [0, 50, 0],
-            scale: [1.2, 1, 1.2],
-          }}
-          transition={{
-            duration: 25,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(107,126,242,0.03)_2px,transparent_2px),linear-gradient(90deg,rgba(107,126,242,0.03)_2px,transparent_2px)] bg-[size:80px_80px]" />
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
           ref={ref}
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.3 }}
         >
           {/* Header */}
           <div className="text-center mb-10">
@@ -93,7 +69,7 @@ const HowItWorks = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.3 }}
-              className="text-4xl md:text-6xl font-bold font-display mb-6 leading-tight"
+              className="text-3xl md:text-4xl font-semibold font-display mb-4 leading-tight"
             >
               Three Phases. One{' '}
               <span className="relative inline-block">
@@ -113,9 +89,9 @@ const HowItWorks = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.4 }}
-              className="text-lg text-gray-600 max-w-3xl mx-auto"
+              className="text-lg text-gray-600 max-w-2xl mx-auto"
             >
-              From codebase analysis to production deployment — fully automated, fully intelligent.
+              From codebase analysis to production deployment, fully automated.
             </motion.p>
           </div>
 
@@ -124,15 +100,16 @@ const HowItWorks = () => {
             {steps.map((step, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 50 }}
+                initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: 0.5 + index * 0.2, duration: 0.6 }}
+                transition={{ delay: index * 0.08, duration: 0.3 }}
                 onHoverStart={() => setActiveStep(index)}
                 className="group relative"
               >
                 {/* Glass Card */}
                 <motion.div
                   whileHover={{ y: -15, scale: 1.02 }}
+                  onClick={scrollToContact}
                   className="relative h-full rounded-3xl p-8 overflow-hidden cursor-pointer"
                   style={{
                     background: 'rgba(255, 255, 255, 0.7)',
@@ -182,7 +159,7 @@ const HowItWorks = () => {
                           repeat: activeStep === index ? Infinity : 0,
                         }}
                       />
-                      <div className={`relative text-7xl font-bold font-display bg-gradient-to-br ${step.gradient} bg-clip-text text-transparent opacity-20 group-hover:opacity-40 transition-opacity`}>
+                      <div className={`relative text-5xl font-bold font-display bg-gradient-to-br ${step.gradient} bg-clip-text text-transparent opacity-20 group-hover:opacity-40 transition-opacity`}>
                         {step.number}
                       </div>
                     </motion.div>

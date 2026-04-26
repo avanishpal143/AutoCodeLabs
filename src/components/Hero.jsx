@@ -57,15 +57,14 @@ const Hero = () => {
 
       <div className="max-w-6xl mx-auto text-center relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.4 }}
         >
-          {/* Tag */}
           <motion.span
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.2 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.1 }}
             className="inline-block px-4 py-1.5 mb-8 text-xs font-semibold tracking-wider uppercase bg-white/10 text-white border border-white/20 rounded-full backdrop-blur-sm"
           >
             Agentic AI Engineering
@@ -73,44 +72,37 @@ const Hero = () => {
 
           {/* Main Headline */}
           <motion.h1
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.8 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-bold font-display mb-8 leading-tight text-white"
+            transition={{ delay: 0.15, duration: 0.4 }}
+            className="text-4xl md:text-5xl lg:text-6xl font-semibold font-display mb-6 leading-[1.15] tracking-tight text-white"
           >
             The Dev Workflow That{' '}
-            <span className="text-gradient bg-gradient-to-r from-blue-300 via-purple-300 to-pink-300 bg-clip-text text-transparent">Works While You Sleep</span>
+            <span className="bg-gradient-to-r from-blue-300 via-purple-300 to-pink-300 bg-clip-text text-transparent">
+              Works While You Sleep
+            </span>
           </motion.h1>
 
           {/* Subheadline */}
           <motion.p
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.8 }}
-            className="text-xl md:text-2xl text-blue-100 mb-6 max-w-3xl mx-auto font-light"
+            transition={{ delay: 0.25, duration: 0.35 }}
+            className="text-base md:text-lg text-blue-200/80 mb-10 max-w-xl mx-auto leading-relaxed"
           >
-            An agentic AI framework that automates, accelerates, and elevates how modern software gets built.
-          </motion.p>
-
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.8 }}
-            className="text-base md:text-lg text-blue-200/80 mb-12 max-w-2xl mx-auto leading-relaxed"
-          >
-            Stop spending your best engineering hours on repetitive scaffolding, ticket routing, and boilerplate. 
-            Our framework thinks, plans, and executes — so your team can focus on what actually moves the needle.
+            Agentic AI that plans, writes, and ships code autonomously.
+            Your team focuses on decisions, not boilerplate.
           </motion.p>
 
           {/* CTA Button */}
           <motion.button
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.7, duration: 0.8 }}
+            transition={{ delay: 0.35, duration: 0.3 }}
             whileHover={{ scale: 1.05, y: -5 }}
             whileTap={{ scale: 0.95 }}
             onClick={scrollToContact}
-            className="group relative px-10 py-5 bg-white text-[#6B7EF2] rounded-full font-bold text-lg shadow-2xl hover:shadow-[0_0_50px_rgba(255,255,255,0.5)] transition-all duration-300 overflow-hidden"
+            className="group relative px-8 py-4 bg-white text-[#6B7EF2] rounded-full font-semibold text-base shadow-2xl hover:shadow-[0_0_40px_rgba(255,255,255,0.4)] transition-all duration-300 overflow-hidden"
           >
             <span className="relative z-10 flex items-center gap-3">
               Request Early Access
@@ -134,7 +126,7 @@ const Hero = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1 }}
-            className="mt-12 flex items-center justify-center gap-8 text-blue-200/60 text-sm"
+            className="mt-10 flex items-center justify-center gap-6 text-blue-200/50 text-xs"
           >
             <div className="flex items-center gap-2">
               <CheckCircle2 className="w-4 h-4 text-green-400" />
